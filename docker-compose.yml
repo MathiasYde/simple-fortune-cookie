@@ -8,3 +8,5 @@ services:
       - BACKEND_PORT=9000
   backend:
     build: backend/.
+    ports:
+      - "9000:9000"
