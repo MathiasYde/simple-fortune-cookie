@@ -54,7 +54,7 @@ jobs:
           ls -la
       - name: "Build and Push"
         env:
-          package_name: ghcr.io/${{ github.repository }}/${{ inputs.name }}
+          package_name: ghcr.io/${{ github.repository }}/${{ inputs.name }}:${{ github.sha }}
         run: |
           docker build -t "${{ env.package_name }}" ${{ inputs.directory }}
-          docker push ${{ env.package_name }}:${{ github.sha }}
+          docker push ${{ env.package_name }}
