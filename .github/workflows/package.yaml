@@ -1,0 +1,58 @@
+name: "Package Application"
+on:
+  workflow_call:
+    inputs:
+      name:
+        type: string
+        required: true
+      directory:
+        description: "The directory of the application"
+        type: string
+        required: true
+      docker_username:
+        description: "Docker Hub username"
+        type: string
+        required: true
+    secrets:
+      docker_password:
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.21"
+      - name: "Build and Test"
+        run: |
+          cd ${{ inputs.directory }}
+          go test
+          go build -o app
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.name }}
+          path: .
+  image:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.name }}
+          path: .
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ inputs.docker_username }}
+          password: ${{ secrets.docker_password }}
+      - uses: docker/setup-buildx-action@v3
+      - run: |
+          ls -la
+          cd frontend
+          ls -la
+      - name: "Build and Push"
+        run: |
+          docker build -t "ghcr.io/${{ github.repository }}/${{ inputs.name }}" ${{ inputs.directory }}
+          docker push ghcr.io/${{ github.repository }}/${{ inputs.name }}:latest
