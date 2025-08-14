@@ -56,6 +56,6 @@ jobs:
         with:
           registry: ghcr.io
           image: ghcr.io/${{ github.repository }}/${{ inputs.name }}:latest
-          # dockerfile: ${{ inputs.directory }}/Dockerfile
+          dockerfile: ./frontend/Dockerfile
           directory: ${{ inputs.directory }}/
           tags: latest
