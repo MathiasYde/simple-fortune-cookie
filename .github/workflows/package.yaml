@@ -56,5 +56,5 @@ jobs:
         env:
           package_name: ghcr.io/${{ github.repository }}/${{ inputs.name }}
         run: |
-          docker build -t "${{ package_name }}" ${{ inputs.directory }}
-          docker push ${{ package_name }}:${{ github.sha }}
+          docker build -t "${{ env.package_name }}" ${{ inputs.directory }}
+          docker push ${{ env.package_name }}:${{ github.sha }}
