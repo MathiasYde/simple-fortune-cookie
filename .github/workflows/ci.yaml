@@ -12,8 +12,12 @@ jobs:
     uses: ./.github/workflows/package.yaml
     with:
       directory: ./frontend
+      docker_username: ${{ env.docker_username }}
+      docker_password: ${{ env.docker_password }}
   backend:
     name: "Package Backend"
     uses: ./.github/workflows/package.yaml
     with:
       directory: ./backend
+      docker_username: ${{ env.docker_username }}
+      docker_password: ${{ env.docker_password }}

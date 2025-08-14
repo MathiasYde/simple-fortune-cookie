@@ -6,6 +6,14 @@ on:
         description: "The directory of the application"
         type: string
         required: true
+      docker_username:
+        description: "Docker Hub username"
+        type: string
+        required: true
+      docker_password:
+        description: "Docker Hub password"
+        type: string
+        required: true
 
 jobs:
   build:
@@ -34,8 +42,8 @@ jobs:
           path: .
       - uses: docker/login-action@v3
         with:
-          username: ${{ env.docker_username }}
-          password: ${{ env.docker_password }}
+          username: ${{ inputs.docker_username }}
+          password: ${{ inputs.docker_password }}
       - uses: docker/setup-buildx-action@v3
       - uses: docker/build-push-action@v6
         with:
