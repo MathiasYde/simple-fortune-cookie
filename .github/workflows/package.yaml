@@ -1,6 +1,6 @@
 name: "Package Application"
 on:
-  workflow_call
+  workflow_call:
     inputs:
       directory:
         description: "The directory of the application"
