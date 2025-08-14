@@ -51,6 +51,6 @@ jobs:
       - uses: docker/build-push-action@v6
         with:
           registry: ghcr.io
-          image: ${{ inputs.directory }}/Dockerfile
-          tags: ghcr.io/${{ github.repository }}/${{ inputs.name }}:latest
-          push: true
+          image: ghcr.io/${{ github.repository }}/${{ inputs.name }}:latest
+          dockerfile: ${{ inputs.directory }}/Dockerfile
+          tags: latest
