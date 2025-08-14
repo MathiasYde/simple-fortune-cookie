@@ -22,8 +22,6 @@ jobs:
   image:
     runs-on: ubuntu-22.04
     needs: [build]
-    permissions:
-      packages: write
     steps:
       - uses: actions/download-artifact@v4
         with:
