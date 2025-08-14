@@ -9,11 +9,11 @@ env:
 jobs:
   frontend:
     name: "Package Frontend"
-    uses: ./.github/workflows/reuseables/package.yaml
+    uses: ./.github/workflows/package.yaml
     with:
       directory: ./frontend
   backend:
     name: "Package Backend"
-    uses: ./.github/workflows/reuseables/package.yaml
+    uses: ./.github/workflows/package.yaml
     with:
       directory: ./backend
