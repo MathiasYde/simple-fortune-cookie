@@ -10,9 +10,8 @@ on:
         description: "Docker Hub username"
         type: string
         required: true
+    secrets:
       docker_password:
-        description: "Docker Hub password"
-        type: string
         required: true
 
 jobs:

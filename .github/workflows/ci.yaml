@@ -15,6 +15,7 @@ jobs:
     with:
       directory: ./frontend
       docker_username: mathiasyde
+    secrets:
       docker_password: ${{ secrets.GITHUB_TOKEN }}
   backend:
     name: "Package Backend"
@@ -22,4 +23,5 @@ jobs:
     with:
       directory: ./backend
       docker_username: mathiasyde
+    secrets:
       docker_password: ${{ secrets.GITHUB_TOKEN }}
