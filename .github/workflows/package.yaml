@@ -50,5 +50,6 @@ jobs:
       - uses: docker/setup-buildx-action@v3
       - uses: docker/build-push-action@v6
         with:
+          image: ${{ inputs.directory }}
           tags: ghcr.io/${{ github.repository }}/${{ inputs.name }}:latest
           push: true
