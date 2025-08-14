@@ -1,0 +1,38 @@
+name: "Package Application"
+on:
+  workflow_call
+    inputs:
+      directory:
+        description: "The directory of the application"
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: cd ${{ inputs.directory }}
+      - run: go test
+      - run: go build -o app
+      - uses: actions/upload-artifact@v4
+        with:
+          name: app
+          path: .
+  image:
+    runs-on: ubuntu-22.04
+    needs: [build]
+    permissions:
+      packages: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: app
+          path: .
+      - uses: docker/login-action@v3
+        with:
+          username: ${{ env.docker_username }}
+          password: ${{ env.docker_password }}
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/build-push-action@v6
+        with:
+          push: true
