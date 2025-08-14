@@ -19,6 +19,7 @@ on:
 
 jobs:
   build:
+    name: "Build and test the application"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -35,6 +36,7 @@ jobs:
           name: ${{ inputs.name }}
           path: .
   image:
+    name: "Image the application and upload to GitHub Container Registry"
     runs-on: ubuntu-latest
     needs: [build]
     steps:
