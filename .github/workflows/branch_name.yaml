@@ -1,0 +1,26 @@
+name: Enforce Branch Naming
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+jobs:
+  check-branch-name:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check branch name
+        run: |
+          BRANCH_NAME="${GITHUB_HEAD_REF}"
+          PATTERN='^(fix|remove|add)/[a-z]+(-[a-z]+)*$'
+
+          echo "Branch name: $BRANCH_NAME"
+          echo "Pattern: $PATTERN"
+
+          if [[ ! "$BRANCH_NAME" =~ $PATTERN ]]; then
+            echo "❌ Branch name does not match the required pattern '(fix|remove|add)/<feature>'"
+            echo "➡ <feature> must be lowercase and words separated by hyphens."
+            echo "Example: fix/button-color, add/login-page, remove/old-api"
+            exit 1
+          fi
+
+          echo "✅ Branch name is valid"
