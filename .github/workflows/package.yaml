@@ -53,6 +53,8 @@ jobs:
           cd frontend
           ls -la
       - name: "Build and Push"
+        env:
+          package_name: ghcr.io/${{ github.repository }}/${{ inputs.name }}
         run: |
-          docker build -t "ghcr.io/${{ github.repository }}/${{ inputs.name }}" ${{ inputs.directory }}
-          docker push ghcr.io/${{ github.repository }}/${{ inputs.name }}:latest
+          docker build -t "${{ package_name }}" ${{ inputs.directory }}
+          docker push ${{ package_name }}:${{ github.sha }}
