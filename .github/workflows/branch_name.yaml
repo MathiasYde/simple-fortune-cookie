@@ -1,0 +1,12 @@
+name: "Enforce Branch Naming Convention"
+on: pull_request
+
+jobs:
+  branch-naming-rules:
+    name: "Branch Naming Rules"
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: deepakputhraya/action-branch-name@master
+        with:
+          regex: '([a-z])+\/([a-z])+' 
+          allowed_prefixes: 'feature,fix'
