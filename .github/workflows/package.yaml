@@ -54,5 +54,5 @@ jobs:
           ls -la
       - name: "Build and Push"
         run: |
-          docker build -t "${{ inputs.name }}" ${{ inputs.directory }}
+          docker build -t "ghcr.io/${{ github.repository }}/${{ inputs.name }}" ${{ inputs.directory }}
           docker push ghcr.io/${{ github.repository }}/${{ inputs.name }}:latest
