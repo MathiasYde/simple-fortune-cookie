@@ -1,0 +1,29 @@
+name: Continuous Integration
+on: push
+
+env:
+  GIT_COMMIT: ${{ github.sha }}
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  frontend:
+    name: "Package Frontend"
+    uses: ./.github/workflows/package.yaml
+    with:
+      name: "app-frontend"
+      directory: ./frontend
+      docker_username: mathiasyde
+    secrets:
+      docker_password: ${{ secrets.GITHUB_TOKEN }}
+  backend:
+    name: "Package Backend"
+    uses: ./.github/workflows/package.yaml
+    with:
+      name: "app-backend"
+      directory: ./backend
+      docker_username: mathiasyde
+    secrets:
+      docker_password: ${{ secrets.GITHUB_TOKEN }}
