@@ -40,7 +40,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: app
+          name: ${{ inputs.name }}
           path: .
       - uses: docker/login-action@v3
         with:
