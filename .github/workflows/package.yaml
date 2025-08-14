@@ -52,9 +52,7 @@ jobs:
           ls -la
           cd frontend
           ls -la
-      - uses: docker/build-push-action@v6
-        with:
-          registry: ghcr.io
-          image: ghcr.io/${{ github.repository }}/${{ inputs.name }}:latest
-          dockerfile: frontend/Dockerfile
-          tags: latest
+      - name: "Build and Push"
+        run: |
+          docker build -t ${{ inputs.name }} frontend/
+          docker push ghcr.io/${{ github.repository }}/${{ inputs.name }}:latest
