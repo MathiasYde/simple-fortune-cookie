@@ -2,6 +2,9 @@ name: "Package Application"
 on:
   workflow_call:
     inputs:
+      name:
+        type: string
+        required: true
       directory:
         description: "The directory of the application"
         type: string
@@ -47,5 +50,5 @@ jobs:
       - uses: docker/setup-buildx-action@v3
       - uses: docker/build-push-action@v6
         with:
-          tags: ghcr.io/${{ github.repository }}/app:latest
+          tags: ghcr.io/${{ github.repository }}/${{ inputs.name }}:latest
           push: true
