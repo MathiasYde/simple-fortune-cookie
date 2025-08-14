@@ -19,7 +19,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
@@ -35,7 +35,7 @@ jobs:
           name: ${{ inputs.name }}
           path: .
   image:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     needs: [build]
     steps:
       - uses: actions/download-artifact@v4
@@ -52,5 +52,6 @@ jobs:
         with:
           registry: ghcr.io
           image: ghcr.io/${{ github.repository }}/${{ inputs.name }}:latest
-          dockerfile: ${{ inputs.directory }}/Dockerfile
+          # dockerfile: ${{ inputs.directory }}/Dockerfile
+          directory: ${{ inputs.directory }}
           tags: latest
