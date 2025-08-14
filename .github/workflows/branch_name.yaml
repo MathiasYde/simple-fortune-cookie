@@ -11,7 +11,7 @@ jobs:
       - name: Check branch name
         run: |
           BRANCH_NAME="${GITHUB_HEAD_REF}"
-          PATTERN='^(fix|remove|add)/[a-z]+(-[a-z]+)*$'
+          PATTERN='^(fix|remove|add)/[a-z0-9_]+(-[a-z0-9_]+)*$'
 
           echo "Branch name: $BRANCH_NAME"
           echo "Pattern: $PATTERN"
