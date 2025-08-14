@@ -4,6 +4,10 @@ on: push
 env:
   GIT_COMMIT: ${{ github.sha }}
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   frontend:
     name: "Package Frontend"
