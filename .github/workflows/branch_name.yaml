@@ -18,7 +18,7 @@ jobs:
 
           if [[ ! "$BRANCH_NAME" =~ $PATTERN ]]; then
             echo "❌ Branch name does not match the required pattern '(fix|remove|add)/<feature>'"
-            echo "➡ <feature> must be lowercase and words separated by hyphens."
+            echo "➡ <feature> must be lowercase letters only and words separated by hyphens. Numbers and other characters are not allowed."
             echo "Example: fix/button-color, add/login-page, remove/old-api"
             exit 1
           fi
