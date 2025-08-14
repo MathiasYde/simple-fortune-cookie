@@ -4,6 +4,7 @@ on:
     inputs:
       directory:
         description: "The directory of the application"
+        type: string
         required: true
 
 jobs:
