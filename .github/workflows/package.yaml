@@ -52,7 +52,9 @@ jobs:
       - uses: docker/setup-buildx-action@v3
       - name: "Build and Push"
         env:
-          package_name: ghcr.io/${{ github.repository }}/${{ inputs.name }}:${{ github.sha }}
+          sha_tag: ghcr.io/${{ github.repository }}/${{ inputs.name }}:${{ github.sha }}
+          latest_tag: ghcr.io/${{ github.repository }}/${{ inputs.name }}:latest
         run: |
-          docker build -t "${{ env.package_name }}" ${{ inputs.directory }}
-          docker push ${{ env.package_name }}
+          docker build -t "${{ env.sha_tag }}" -t "${{ env.latest_tag }}" ${{ inputs.directory }}
+          docker push ${{ env.sha_tag }}
+          docker push "${{ env.latest_tag }}"
