@@ -15,4 +15,8 @@ Our extensive user research led us to the revaluation that our service requires 
 Frontend
 Backend
 Database
+**Frontend**: The user interface of the service, allowing users to interact with fortune cookies. Users can request a single fortune, view all fortunes, or submit new ones. The frontend communicates with the backend via API calls.
 
+**Backend**: Handles the business logic and processes requests from the frontend. It retrieves fortunes from the database, adds new fortunes, and ensures data is properly managed and served to the frontend.
+
+**Database**: Stores all fortune cookies, including user-submitted ones. The backend interacts with the database to fetch, insert, and update fortune data as needed.
