@@ -9,6 +9,7 @@ jobs:
     name: "Deploy Application"
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ secrets.KUBECONFIG }}" | base64 -d > kubeconfig
       - uses: actions/checkout@v4
+      - run: ls -la
+      - run: echo "${{ secrets.KUBECONFIG }}" | base64 -d > kubeconfig
       - run: kubectl --kubeconfig kubeconfig apply -f .deployments/
