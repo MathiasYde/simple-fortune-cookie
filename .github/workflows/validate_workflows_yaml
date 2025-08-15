@@ -1,0 +1,20 @@
+name: "Validate correct YAML in workflow files"
+on:
+  push:
+    paths:
+      - .github/workflows/**
+  pull_request:
+    paths:
+      - .github/workflows/**
+
+jobs:
+  validate-yaml:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: Validate each workflow file
+        run: |
+          for file in .github/workflows/*.yaml .github/workflows/*.yml; do
+            echo "Validating $file"
+            yq validate "$file"
+          done
