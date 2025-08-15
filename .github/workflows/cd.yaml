@@ -9,4 +9,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "${{ secrets.KUBECONFIG }}" | base64 -d > kubeconfig
+      - uses: actions/checkout@v4
       - run: kubectl --kubeconfig kubeconfig apply -f .deployments/
