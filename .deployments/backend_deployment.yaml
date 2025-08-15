@@ -30,6 +30,5 @@ spec:
             memory: "128Mi"
             cpu: "500m"
         ports:
-        - protocol: TCP
-          port:  9000
-          containerPort: 9000
+        - containerPort: 9000
+          protocol: TCP
