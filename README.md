@@ -4,7 +4,7 @@ Fortune Cookie as a service.
 
 ## Features
 
-Our extensive user research led us to the revaluation that our service requires the following features:
+Our extensive user research led us to the revelation that our service requires the following features:
 
 - Get one fortune cookie: Feeling just a little bit sad and like you need just a little advice? Grab a single fortune cookie and find a little joy in life
 - Get all fortunes cookies: Feeling a whole lot of sad, then grab all of our fortunes cookies!
