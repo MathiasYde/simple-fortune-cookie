@@ -1,32 +1,22 @@
 # Simple Fortune Cookie
 
-A project in Go for you to apply all the awesome things
-    you've learned at the academy!
+Fortune Cookie as a service.
 
-The project can be run by 1-3 people in a team.
+## Features
 
-## Fork the Project
+Our extensive user research led us to the revelation that our service requires the following features:
 
-Fork the project to get your own private working copy:
+- Get one fortune cookie: Feeling just a little bit sad and like you need just a little advice? Grab a single fortune cookie and find a little joy in life
+- Get all fortune cookies: Feeling a whole lot of sad, then grab all of our fortune cookies!
+- Make a new fortune cookie: Want to collaborate on creating the best fortune cookies? Then submit a new fortune cookie that will be added to the database
 
-![Forking the Project](./images/forking-project.png)
+## Architecture
 
-* invite the team as collaborators, so you can make changes:
+Frontend
+Backend
+Database
+**Frontend**: The user interface of the service, allowing users to interact with fortune cookies. Users can request a single fortune, view all fortunes, or submit new ones. The frontend communicates with the backend via API calls.
 
-When you have a fork that your teammates can access,
-please proceed to the [01-introduction](./01-introduction.md).
+**Backend**: Handles the business logic and processes requests from the frontend. It retrieves fortunes from the database, adds new fortunes, and ensures data is properly managed and served to the frontend.
 
-## Folders
-
-- `backend`: a Go server that serves api requests
-- `frontend`: an HTTP webserver (in Go) that you can view in your browser
-
-## Eficode Notes
-
-This repository is entirely generated.
-Changes will be overwritten by subsequent releases,
-    from the main repository.
-
-In case of an unfortunate push,
-    simply make a new release from the main repository,
-    and squash the commits on this one.
+**Database**: Stores all fortune cookies, including user-submitted ones. The backend interacts with the database to fetch, insert, and update fortune data as needed.
