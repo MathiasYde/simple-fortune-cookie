@@ -14,6 +14,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Validate each workflow file
         run: |
+          shopt -s nullglob # fix for missing patterns
           for file in .github/workflows/*.yaml .github/workflows/*.yml; do
             echo "Validating $file"
             yq 'true' "$file" > /dev/null
