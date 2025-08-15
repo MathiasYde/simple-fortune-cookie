@@ -11,10 +11,10 @@ jobs:
   validate-yaml:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Validate each workflow file
         run: |
           for file in .github/workflows/*.yaml .github/workflows/*.yml; do
             echo "Validating $file"
-            yq validate "$file"
+            yq 'true' "$file" > /dev/null
           done
